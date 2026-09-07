@@ -27,6 +27,7 @@ import Navigation from "./Navigation";
 import ProjectModal from "./ProjectModal";
 import BlogSection from "./BlogSection";
 import ContactForm from "./ContactForm";
+import { ProjectImage } from "./ProjectImage";
 
 const projects = [
   {
@@ -316,10 +317,13 @@ export default function Portfolio() {
                   onClick={() => setActiveProject(project)}
                 >
                   <div className="relative overflow-hidden">
-                    <img 
-                      src={project.thumbnail} 
-                      alt={project.title} 
-                      className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" 
+                    <ProjectImage
+                      src={project.thumbnail}
+                      alt={project.title}
+                      title={project.title}
+                      category={project.category}
+                      testId={`project-thumb-${project.id}`}
+                      className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute top-4 left-4">
                       <Badge variant="secondary" className="bg-white/90 text-gray-900">

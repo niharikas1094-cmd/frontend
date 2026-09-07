@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { ProjectImage } from "./ProjectImage";
 import { 
   X, 
   ExternalLink, 
@@ -44,9 +45,12 @@ const ProjectModal = ({ project, onClose }) => {
 
           {/* Hero Image */}
           <div className="relative h-64 md:h-80 overflow-hidden rounded-t-2xl">
-            <img
+            <ProjectImage
               src={project.images[0]}
               alt={project.title}
+              title={project.title}
+              category={project.category}
+              testId="project-modal-hero-image"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
@@ -136,9 +140,11 @@ const ProjectModal = ({ project, onClose }) => {
                       whileHover={{ scale: 1.02 }}
                       className="overflow-hidden rounded-lg"
                     >
-                      <img
+                      <ProjectImage
                         src={image}
                         alt={`${project.title} ${index + 2}`}
+                        title={`${project.title} — View ${index + 2}`}
+                        testId={`project-gallery-image-${index}`}
                         className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
                       />
                     </motion.div>
