@@ -4,50 +4,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, User, ArrowRight } from "lucide-react";
-
-const blogPosts = [
-  {
-    id: 1,
-    title: "Traditional Architecture Meets Modern Functionality",
-    excerpt: "Exploring how traditional Indian architectural elements can be integrated into contemporary government and public buildings.",
-    category: "Cultural Integration",
-    readTime: "5 min read",
-    date: "March 15, 2024",
-    author: "Niharika Singh",
-    image: "/images/blog1.jpg",
-    featured: true
-  },
-  {
-    id: 2,
-    title: "Industrial Architecture in Belgium: Lessons Learned",
-    excerpt: "Insights from working on industrial campus projects and the unique challenges of port and manufacturing architecture.",
-    category: "Industrial Design",
-    readTime: "7 min read",
-    date: "February 28, 2024",
-    author: "Niharika Singh",
-    image: "/images/blog2.jpg"
-  },
-  {
-    id: 3,
-    title: "From India to Belgium: An Architect's Journey",
-    excerpt: "Reflections on practicing architecture across cultures and adapting design approaches to different contexts and climates.",
-    category: "Professional Journey",
-    readTime: "6 min read",
-    date: "January 20, 2024",
-    author: "Niharika Singh",
-    image: "/images/blog3.jpg"
-  },
-  {
-    id: 4,
-    title: "Wine Tourism Architecture: Creating Experiential Spaces",
-    excerpt: "Designing spaces that enhance the wine experience through thoughtful architecture and landscape integration.",
-    category: "Hospitality Design",
-    readTime: "4 min read",
-    date: "December 10, 2023",
-    author: "Niharika Singh",
-    image: "/images/blog4.jpg"
-  }
-];
+import { blogPosts } from "../data/portfolio";
+import { ProjectImage } from "./ProjectImage";
 
 const BlogSection = () => {
   return (
@@ -76,9 +34,12 @@ const BlogSection = () => {
             {blogPosts.filter(post => post.featured).map(post => (
               <Card key={post.id} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group cursor-pointer">
                 <div className="relative">
-                  <img 
-                    src={post.image} 
+                  <ProjectImage
+                    src={post.image}
                     alt={post.title}
+                    title={post.title}
+                    category={post.category}
+                    testId={`blog-featured-image-${post.id}`}
                     className="w-full h-64 lg:h-80 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute top-4 left-4">
@@ -132,10 +93,12 @@ const BlogSection = () => {
                 className="overflow-hidden hover:shadow-md transition-shadow duration-300 group cursor-pointer"
               >
                 <div className="flex">
-                  <img 
-                    src={post.image} 
+                  <ProjectImage
+                    src={post.image}
                     alt={post.title}
-                    className="w-24 h-24 object-cover group-hover:scale-105 transition-transform duration-300"
+                    compact
+                    testId={`blog-thumb-image-${post.id}`}
+                    className="w-24 h-24 shrink-0 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <CardContent className="flex-1 p-4">
                     <div className="flex items-center space-x-2 text-xs text-gray-500 mb-2">

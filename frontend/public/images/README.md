@@ -15,8 +15,9 @@ Until a file exists, a styled placeholder with the project title is shown instea
 
 ## Tips
 - Recommended sizes: thumbnails ~1200x800px, hero/gallery ~1600x1000px (landscape). Keep each under ~500 KB.
-- Want more gallery images or PNGs? Edit the `images` array for that project in
-  `frontend/src/components/Portfolio.jsx` (around lines 41-127), e.g.
+- Blog images: `blog1.jpg` … `blog4.jpg`.
+- **All text and image paths live in one file: `frontend/src/data/portfolio.js`.**
+  Edit project titles, descriptions, skills, awards, contact details, or add more gallery images there, e.g.
   `images: ["/images/project1_1.jpg", "/images/project1_2.jpg", "/images/project1_4.png"]`.
 - Paths always start with `/images/` because this folder is served from the site root.
 - After adding files locally, refresh the browser (hard refresh if the old placeholder is cached).

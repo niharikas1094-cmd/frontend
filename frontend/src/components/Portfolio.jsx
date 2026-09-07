@@ -28,124 +28,7 @@ import ProjectModal from "./ProjectModal";
 import BlogSection from "./BlogSection";
 import ContactForm from "./ContactForm";
 import { ProjectImage } from "./ProjectImage";
-
-const projects = [
-  {
-    id: 1,
-    title: "Farmer's Cooperative (Krishi Bhavan)",
-    year: "2018",
-    category: "Public",
-    location: "Bhubaneswar, Odisha, India",
-    status: "Completed",
-    client: "Government of Odisha",
-    thumbnail: "/images/project1_thumb.jpg",
-    images: ["/images/project1_1.jpg", "/images/project1_2.jpg", "/images/project1_3.jpg"],
-    description: "Government building designed to blend governance, learning, and public engagement. Uses local materials and traditional patterns.",
-    details: "A comprehensive farmers' cooperative building that serves as both an administrative center and learning hub. The design incorporates traditional Odishan architectural elements with modern functionality, creating spaces for farmer education, government services, and community gatherings.",
-    area: "12,000 m²",
-    budget: "Confidential",
-    team: "Design Architect",
-    tags: ["Government Building", "Traditional Architecture", "Community Engagement", "Local Materials"]
-  },
-  {
-    id: 2,
-    title: "Experiential Wine Tourism Hub",
-    year: "2017",
-    category: "Hospitality",
-    location: "Nashik, India",
-    status: "Thesis Project",
-    client: "Academic Project",
-    thumbnail: "/images/project2_thumb.jpg",
-    images: ["/images/project2_1.jpg", "/images/project2_2.jpg", "/images/project2_3.jpg"],
-    description: "Design for a winery transformed into an experiential wine tourism hub. Focuses on immersive visitor experiences and sustainable design.",
-    details: "This thesis project explores the transformation of traditional winery operations into a comprehensive wine tourism destination. The design integrates wine production facilities with visitor experiences, including tasting rooms, educational spaces, and accommodation, all set within the scenic landscape of Nashik's wine country.",
-    area: "22 acres",
-    budget: "Academic Study",
-    team: "Individual Thesis Project",
-    tags: ["Wine Tourism", "Hospitality Design", "Experiential Architecture", "Landscape Integration"]
-  },
-  {
-    id: 3,
-    title: "Stacked Office Space Extension",
-    year: "Ongoing",
-    category: "Commercial",
-    location: "Geraardsbergen, Belgium",
-    status: "In Progress",
-    client: "Private Client",
-    thumbnail: "/images/project3_thumb.jpg",
-    images: ["/images/project3_1.jpg", "/images/project3_2.jpg"],
-    description: "Extension to existing office and production building, incorporating a showroom and additional office space.",
-    details: "A carefully planned extension that doubles the functionality of an existing industrial facility. The project includes new office spaces, a product showroom, and enhanced production areas, all designed to work harmoniously with the existing structure while meeting modern workplace standards.",
-    area: "7,900 m²",
-    budget: "Confidential",
-    team: "Project Architect (LPH 1-9)",
-    tags: ["Office Extension", "Industrial Architecture", "Workplace Design", "Adaptive Reuse"]
-  },
-  {
-    id: 4,
-    title: "Industrial Administrative Campus",
-    year: "Ongoing",
-    category: "Industrial",
-    location: "Antwerp, Belgium",
-    status: "In Progress",
-    client: "Port Authority",
-    thumbnail: "/images/project4_thumb.jpg",
-    images: ["/images/project4_1.jpg", "/images/project4_2.jpg"],
-    description: "A cohesive ensemble of eight buildings supporting port and industrial operations including admin, maintenance, warehouse, and security facilities.",
-    details: "This comprehensive campus development creates a unified administrative and operational hub for port activities. The design addresses the complex functional requirements of modern port operations while maintaining architectural coherence across multiple building types and uses.",
-    area: "Multiple Buildings",
-    budget: "Confidential",
-    team: "Project Architect (LPH 1-9)",
-    tags: ["Industrial Campus", "Port Architecture", "Multi-Building Complex", "Infrastructure"]
-  },
-  {
-    id: 5,
-    title: "Greenprint for the Future",
-    year: "Tender Phase",
-    category: "Industrial",
-    location: "Herentals, Belgium",
-    status: "Tender",
-    client: "Printing Press Company",
-    thumbnail: "/images/project5_thumb.jpg",
-    images: ["/images/project5_1.jpg", "/images/project5_2.jpg"],
-    description: "Redevelopment of a printing press focusing on modernization, sustainable practices, and green integration.",
-    details: "This redevelopment project transforms an existing printing facility into a model of sustainable industrial architecture. The design emphasizes energy efficiency, green technologies, and environmental integration while maintaining the operational efficiency required for modern printing operations.",
-    area: "7,900 m²",
-    budget: "Tender Stage",
-    team: "Lead Designer (LPH 1-7)",
-    tags: ["Sustainable Design", "Industrial Renovation", "Green Technology", "Adaptive Reuse"]
-  },
-  {
-    id: 6,
-    title: "Architectural and Cultural Traditions in India",
-    year: "2015",
-    category: "Research",
-    location: "Chanderi, India",
-    status: "Completed",
-    client: "UNESCO & Berkeley Collaboration",
-    thumbnail: "/images/project6_thumb.jpg",
-    images: ["/images/project6_1.jpg", "/images/project6_2.jpg"],
-    description: "Research project focusing on traditional settlement patterns and building designs in Chanderi, inspired by Baiju Bawra Haveli.",
-    details: "An in-depth research project examining the architectural heritage and cultural traditions of Chanderi. The study documents traditional building techniques, settlement patterns, and cultural practices, providing insights for contemporary applications of traditional design principles.",
-    area: "Research Study",
-    budget: "Academic Research",
-    team: "Research Team Member (16 collaborators)",
-    tags: ["Heritage Research", "Traditional Architecture", "Cultural Documentation", "Academic Study"]
-  }
-];
-
-const skills = [
-  { name: "Architectural Design", level: 95 },
-  { name: "BIM (Revit, ArchiCAD)", level: 90 },
-  { name: "Master Planning", level: 85 },
-  { name: "3D Visualization (SketchUp)", level: 88 },
-  { name: "Adobe Creative Suite", level: 85 },
-  { name: "Construction Management", level: 80 },
-  { name: "Heritage Conservation", level: 75 },
-  { name: "Sustainable Design", level: 82 }
-];
-
-const categories = ["All", "Public", "Hospitality", "Commercial", "Industrial", "Research"];
+import { profile, projects, categories, skills, software, education, awards } from "../data/portfolio";
 
 export default function Portfolio() {
   const [activeProject, setActiveProject] = useState(null);
@@ -165,8 +48,8 @@ export default function Portfolio() {
   const handleDownloadResume = () => {
     // Create a mock resume download
     const link = document.createElement('a');
-    link.href = '/resume/niharika-singh-cv.pdf';
-    link.download = 'Niharika-Singh-CV.pdf';
+    link.href = profile.cvPath;
+    link.download = profile.cvFileName;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -209,7 +92,7 @@ export default function Portfolio() {
             transition={{ delay: 0.2 }}
             className="text-6xl md:text-7xl font-bold mb-6 tracking-tight"
           >
-            Niharika Singh
+            {profile.name}
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }} 
@@ -217,8 +100,7 @@ export default function Portfolio() {
             transition={{ delay: 0.4 }}
             className="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed"
           >
-            Architect with international experience across India and Belgium, passionate about 
-            sustainable design and cultural integration. Currently based in Leuven, Belgium.
+            {profile.tagline}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }} 
@@ -401,9 +283,9 @@ export default function Portfolio() {
           >
             <h3 className="text-2xl font-semibold mb-6">Software Proficiency</h3>
             <div className="flex flex-wrap justify-center gap-3">
-              {["Revit", "ArchiCAD", "AutoCAD", "SketchUp", "Adobe InDesign", "Adobe Photoshop", "Adobe Illustrator", "Enscape", "Twinmotion", "Microsoft Office"].map((software) => (
-                <Badge key={software} variant="secondary" className="px-4 py-2 text-sm">
-                  {software}
+              {software.map((item) => (
+                <Badge key={item} variant="secondary" className="px-4 py-2 text-sm">
+                  {item}
                 </Badge>
               ))}
             </div>
@@ -440,18 +322,14 @@ export default function Portfolio() {
                 Education
               </h3>
               <div className="space-y-8">
-                <div className="border-l-4 border-gray-200 pl-6">
-                  <h4 className="font-semibold text-lg">Bachelor of Architecture</h4>
-                  <p className="text-gray-600">School of Planning and Architecture, Bhopal</p>
-                  <p className="text-sm text-gray-500 mb-2">2012 – 2017</p>
-                  <p className="text-sm">5-year professional degree including internship</p>
-                </div>
-                <div className="border-l-4 border-gray-200 pl-6">
-                  <h4 className="font-semibold text-lg">Primary & Secondary Education</h4>
-                  <p className="text-gray-600">Bal Bhavan School, Bhopal</p>
-                  <p className="text-sm text-gray-500 mb-2">2000 – 2012</p>
-                  <p className="text-sm">School Prefect (2010-2012), Academic Excellence</p>
-                </div>
+                {education.map((item) => (
+                  <div key={item.degree} className="border-l-4 border-gray-200 pl-6" data-testid="education-item">
+                    <h4 className="font-semibold text-lg">{item.degree}</h4>
+                    <p className="text-gray-600">{item.institution}</p>
+                    <p className="text-sm text-gray-500 mb-2">{item.period}</p>
+                    <p className="text-sm">{item.note}</p>
+                  </div>
+                ))}
               </div>
             </motion.div>
 
@@ -466,24 +344,14 @@ export default function Portfolio() {
                 Awards & Recognition
               </h3>
               <div className="space-y-8">
-                <div className="border-l-4 border-gray-200 pl-6">
-                  <h4 className="font-semibold text-lg">COA-TRC National Awards</h4>
-                  <p className="text-gray-600">Council of Architecture - India</p>
-                  <p className="text-sm text-gray-500 mb-2">2017</p>
-                  <p className="text-sm">Top 10, Zone 1 - Excellence in Architectural Thesis</p>
-                </div>
-                <div className="border-l-4 border-gray-200 pl-6">
-                  <h4 className="font-semibold text-lg">UNESCO Louis I Kahn Trophy</h4>
-                  <p className="text-gray-600">NASA (National Association of Students of Architecture)</p>
-                  <p className="text-sm text-gray-500 mb-2">2015</p>
-                  <p className="text-sm">Top 6 - National Level Architecture Competition</p>
-                </div>
-                <div className="border-l-4 border-gray-200 pl-6">
-                  <h4 className="font-semibold text-lg">National Student's Design Competition</h4>
-                  <p className="text-gray-600">UNESCO and Berkeley</p>
-                  <p className="text-sm text-gray-500 mb-2">2015</p>
-                  <p className="text-sm">3rd Prize Winner - Ujjain Kumbh Festival Temporary Shelter Design</p>
-                </div>
+                {awards.map((item) => (
+                  <div key={item.title} className="border-l-4 border-gray-200 pl-6" data-testid="award-item">
+                    <h4 className="font-semibold text-lg">{item.title}</h4>
+                    <p className="text-gray-600">{item.organization}</p>
+                    <p className="text-sm text-gray-500 mb-2">{item.year}</p>
+                    <p className="text-sm">{item.note}</p>
+                  </div>
+                ))}
               </div>
             </motion.div>
           </div>
@@ -520,8 +388,8 @@ export default function Portfolio() {
                   <Mail className="w-6 h-6 text-gray-400" />
                   <div>
                     <p className="font-medium">Email</p>
-                    <a href="mailto:ariakas1094@gmail.com" className="text-gray-300 hover:text-white transition-colors">
-                      ariakas1094@gmail.com
+                    <a href={`mailto:${profile.email}`} className="text-gray-300 hover:text-white transition-colors" data-testid="contact-email-link">
+                      {profile.email}
                     </a>
                   </div>
                 </div>
@@ -529,8 +397,8 @@ export default function Portfolio() {
                   <Phone className="w-6 h-6 text-gray-400" />
                   <div>
                     <p className="font-medium">Phone</p>
-                    <a href="tel:+32466704611" className="text-gray-300 hover:text-white transition-colors">
-                      +32 466 704 611
+                    <a href={profile.phoneHref} className="text-gray-300 hover:text-white transition-colors" data-testid="contact-phone-link">
+                      {profile.phone}
                     </a>
                   </div>
                 </div>
@@ -538,8 +406,8 @@ export default function Portfolio() {
                   <Linkedin className="w-6 h-6 text-gray-400" />
                   <div>
                     <p className="font-medium">LinkedIn</p>
-                    <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                      linkedin.com/in/niharika-singh
+                    <a href={profile.linkedinUrl} className="text-gray-300 hover:text-white transition-colors" data-testid="contact-linkedin-link">
+                      {profile.linkedinLabel}
                     </a>
                   </div>
                 </div>
@@ -547,7 +415,7 @@ export default function Portfolio() {
                   <MapPin className="w-6 h-6 text-gray-400" />
                   <div>
                     <p className="font-medium">Location</p>
-                    <p className="text-gray-300">Leuven, Belgium</p>
+                    <p className="text-gray-300">{profile.location}</p>
                   </div>
                 </div>
               </div>
@@ -569,21 +437,21 @@ export default function Portfolio() {
       <footer className="bg-black text-white py-12">
         <div className="container mx-auto px-6">
           <div className="text-center">
-            <h3 className="text-2xl font-semibold mb-4">Niharika Singh</h3>
+            <h3 className="text-2xl font-semibold mb-4">{profile.name}</h3>
             <p className="text-gray-400 mb-6">
-              Architectural Design • Master Planning • Cultural Integration • Sustainable Design
+              {profile.footerLine}
             </p>
             <div className="flex justify-center space-x-6">
-              <a href="mailto:ariakas1094@gmail.com" className="text-gray-400 hover:text-white transition-colors">
+              <a href={`mailto:${profile.email}`} className="text-gray-400 hover:text-white transition-colors">
                 <Mail className="w-6 h-6" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href={profile.linkedinUrl} className="text-gray-400 hover:text-white transition-colors">
                 <Linkedin className="w-6 h-6" />
               </a>
             </div>
             <div className="mt-8 pt-8 border-t border-gray-800">
               <p className="text-gray-500 text-sm">
-                © 2024 Niharika Singh. All rights reserved.
+                © {new Date().getFullYear()} {profile.name}. All rights reserved.
               </p>
             </div>
           </div>

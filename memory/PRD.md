@@ -9,16 +9,17 @@ Enhance an existing architect portfolio website (front-end only, no backend) wit
 
 ## Architecture
 - React + Tailwind + Shadcn UI + framer-motion
-- `src/components/Portfolio.jsx` — page layout + hardcoded project/bio/skills data (6 projects)
+- **`src/data/portfolio.js` — SINGLE SOURCE OF CONTENT**: profile/contact, categories, projects (text + image paths), skills, software, education, awards, blogPosts. Edit here to change site content.
+- `src/components/Portfolio.jsx` — page layout only (imports from data file)
+- `src/components/BlogSection.jsx` — blog layout (imports blogPosts)
 - `src/components/ProjectModal.jsx` — project detail modal (hero + gallery)
-- `src/components/ProjectImage.jsx` — image with styled fallback placeholder (grid texture, Building2 icon, title, category) on load error
-- `src/components/ContactForm.jsx`, `BlogSection.jsx`, `Navigation.jsx`
+- `src/components/ProjectImage.jsx` — image with styled fallback placeholder (`compact` prop for small thumbs)
 - `public/images/` — where user drops real photos; `public/images/README.md` maps file names → projects
 
 ## Implemented
 - 2026-06 (earlier): layout, animations, filtering, modal, contact form toast, authentic PDF data
-- 2026-06: `ProjectImage` fallback placeholder wired into cards + modal hero + gallery; created `public/images/` with README guide listing exact expected filenames (`projectN_thumb.jpg`, `projectN_1.jpg`...). Verified via screenshot.
+- 2026-06: `ProjectImage` fallback placeholder wired into cards + modal hero + gallery + blog; created `public/images/` with README guide.
+- 2026-06: Refactored ALL hardcoded content (projects, skills, software, education, awards, contact, blog) out of components into `src/data/portfolio.js`. Portfolio.jsx 603→470 lines. Verified via screenshot (all counts match).
 
 ## Backlog
-- P1: Move hardcoded data out of Portfolio.jsx into `data/projects.js`
-- P2: Lightbox for gallery images; optional real image upload (only if user agrees to backend)
+- P2: Lightbox for gallery images; share links per project; optional real image upload (only if user agrees to backend)
